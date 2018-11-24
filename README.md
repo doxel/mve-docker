@@ -46,7 +46,7 @@ DOCKER_OPTIONS="-v /mnt:/mnt -it --rm=true" smvsrecon <param> ...
 ```
 
 ## NOTES
-You can set various docker-run options using DOCKER_OPTIONS environment variable ie: --cpus 0.5
+You can set various docker-run options using DOCKER_OPTIONS environment variable eg: --cpus 0.5
 
 Default docker-run options are:
 ```
