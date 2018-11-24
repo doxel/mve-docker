@@ -1,0 +1,26 @@
+#!/bin/bash
+usage() {
+cat << EOF
+NAME
+       $(basename $0) - Run MVE related commands in mve-docker containers
+
+SYNOPSIS
+       [DOCKER_OPTIONS="--name=example"] $(basename $0) COMMAND [ARG ...]
+
+DESCRIPTION
+       Run MVE related commands in docker containers.
+
+       The defaults docker-run parameters ("-v /mnt:/mnt -it --rm=true") can
+       be overriden with the DOCKER_DEFAULTS environment variable.
+
+       You can supply additional parameters using the DOCKER_OPTIONS
+       environment variable.
+
+EOF
+exit 1
+}
+
+[ "$1" = '-h' -o "$1" = '--help' ] && usage
+
+DOCKER_DEFAULTS=${DOCKER_DEFAULTS:-"-v /mnt:/mnt -it --rm=true"}
+docker run $DOCKER_DEFAULTS $DOCKER_OPTIONS mve-docker $(basename $0) $@
