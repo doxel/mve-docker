@@ -23,4 +23,4 @@ exit 1
 [ "$1" = '-h' -o "$1" = '--help' ] && usage
 
 DOCKER_DEFAULTS=${DOCKER_DEFAULTS:-"-v /mnt:/mnt -it --rm=true"}
-docker run $DOCKER_DEFAULTS $DOCKER_OPTIONS mve-docker $(basename $0) $@
+docker run $DOCKER_DEFAULTS $DOCKER_OPTIONS mve $(basename $0) $@
