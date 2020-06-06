@@ -1,4 +1,4 @@
-FROM debian:stretch-slim
+FROM debian:buster-slim
 
 ARG user=doxel
 ARG debian_mirror=deb.debian.org
@@ -47,7 +47,7 @@ RUN git clone \
       src/mvs-texturing
 
 RUN make -j $(nproc) -C src/mve \
- && make -j $(nproc) -C src/smvs \
+ && export CXXFLAGS=-mpopcnt && make -j $(nproc) -C src/smvs && unset CXXFLAGS \
  && make -j $(nproc) -C src/PoissonRecon \
  && cd src/mvs-texturing \
  && mkdir build \
